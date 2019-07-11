@@ -11,7 +11,7 @@ Sergii Sinienok - Platform repository
  - [X] Основное ДЗ
 
 ### В процессе сделано:
- - Установлен *kubectl* при помощи Homebrew - `brew install kubernetes-cli`. 
+ - Установлен *kubectl* при помощи Homebrew - `brew install kubernetes-cli`.
     ```shell
     kubectl version                                                       (:|✔)
     Client Version: version.Info{Major:"1", Minor:"12+", GitVersion:"v1.12.8-dispatcher", GitCommit:"1215389331387f57594b42c5dd024a2fe27334f8", GitTreeState:"clean", BuildDate:"2019-05-13T18:18:50Z", GoVersion:"go1.10.8", Compiler:"gc", Platform:"darwin/amd64"}
@@ -201,14 +201,95 @@ Sergii Sinienok - Platform repository
     <br/>
     - storage-provisioner - addon, его yaml определение лежит в /etc/kubernetes/addons и восстанавливается оттуда
  - Сделан Dockerfile с Nginx внутри как веб-сервер. Была проблема с запуском nginx под нерутовым юзером, этот гайд помог решить http://pjdietz.com/2016/08/28/nginx-in-docker-without-root.html. Docker Image опубликован на DockerHub https://hub.docker.com/r/debugss/k8s-infrastructure-platform/tags
- - 
+ - Написан манифест для web-pod.yaml с одним контейнерос с Docker Hub. Проведен траблшутинг запуска pod:
+<br/>
+    <details>
+    <summary>Результат</summary>
+
+    ```shell
+    kubectl describe pod web                                                        (kubernetes-intro|✚1…)
+    Name:               web
+    Namespace:          default
+    Priority:           0
+    PriorityClassName:  <none>
+    Node:               minikube/10.0.2.15
+    Start Time:         Thu, 11 Jul 2019 13:14:01 +0300
+    Labels:             app=web
+    Annotations:        kubectl.kubernetes.io/last-applied-configuration:
+                        {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{},"labels":{"app":"web"},"name":"web","namespace":"default"},"spec":{"container...
+    Status:             Running
+    IP:                 172.17.0.3
+    Containers:
+    dazmodel-k8s-intro:
+        Container ID:   docker://cea01b9d2570e5e2c6fa5b9019bbab55ff77a6705f52206fb6dc2e057dda8939
+        Image:          debugss/k8s-infrastructure-platform:1.0
+        Image ID:       docker-pullable://debugss/k8s-infrastructure-platform@sha256:38e26ed2e5b942190db20d1e241d1d822b402836739a6842c39afe4689677268
+        Port:           <none>
+        Host Port:      <none>
+        State:          Running
+        Started:      Thu, 11 Jul 2019 13:14:02 +0300
+        Ready:          True
+        Restart Count:  0
+        Environment:    <none>
+        Mounts:
+        /var/run/secrets/kubernetes.io/serviceaccount from default-token-n5vhp (ro)
+    Conditions:
+    Type              Status
+    Initialized       True 
+    Ready             True 
+    ContainersReady   True 
+    PodScheduled      True 
+    Volumes:
+    default-token-n5vhp:
+        Type:        Secret (a volume populated by a Secret)
+        SecretName:  default-token-n5vhp
+        Optional:    false
+    QoS Class:       BestEffort
+    Node-Selectors:  <none>
+    Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                    node.kubernetes.io/unreachable:NoExecute for 300s
+    Events:
+    Type    Reason     Age   From               Message
+    ----    ------     ----  ----               -------
+    Normal  Scheduled  7m1s  default-scheduler  Successfully assigned default/web to minikube
+    Normal  Pulled     7m    kubelet, minikube  Container image "debugss/k8s-infrastructure-platform:1.0" already present on machine
+    Normal  Created    7m    kubelet, minikube  Created container dazmodel-k8s-intro
+    Normal  Started    7m    kubelet, minikube  Started container dazmodel-k8s-intro
+    ```
+</details>
+<br/>
+
+ - В web pod добавлен volume. Этот же volume подключен к init-container и app container. Web pod удален и перезапущен:
+<br/>
+    <details>
+    <summary>Результат</summary>
+
+    ```shell
+    kubectl delete pod web                                                          (kubernetes-intro|✚1…)
+        pod "web" deleted
+
+    [~/Documents/SRC/dazmodel_platform/kubernetes-intro] kubectl apply -f web-pod.yaml && kubectl get pods -w                            (kubernetes-intro|✚1…)
+    pod/web created
+    NAME   READY   STATUS     RESTARTS   AGE
+    web    0/1     Init:0/1   0          0s
+    web   0/1   PodInitializing   0     2s
+    web   1/1   Running   0     3s
+    ```
+    </details>
+<br/>
+
+- Установлен Kube Forwarder. Настроен порт форвардинг для локальной разработки.
 
 ### Как запустить проект:
- - Например, запустить команду X в директории Y
+ - В корне проекта выполнить `kubectl apply -f kubernetes-intro/web-pod.yaml && kubectl get pods -w`
+ - В новом окне терминала выполнить `port-forward pod/web 8000:8000`
 
 ### Как проверить работоспособность:
- - Например, перейти по ссылке http://localhost:8080
+ - В окне браузера перейти по ссылке http://localhost:8000/index.html. Ожидаемый результат: 
+![Expected Result](kubernetes-intro/expected.png)
 
 ### PR checklist:
- - [ ] Выставлен label с номером домашнего задания
- - [ ] Лектор добавлен в Assignees
+ - [X] Выставлен label с номером домашнего задания
+ - [X] Лектор добавлен в Assignees
+ - [X] Добавлен файл `.github/PULL_REQUEST_TEMPLATE.md` с соответствующим контентом
+ - [X] Добавлен файл `.travis.yaml` с соответствующим контентом
