@@ -203,7 +203,7 @@ Sergii Sinienok - Platform repository
  - Сделан Dockerfile с Nginx внутри как веб-сервер. Была проблема с запуском nginx под нерутовым юзером, этот гайд помог решить http://pjdietz.com/2016/08/28/nginx-in-docker-without-root.html. Docker Image опубликован на DockerHub https://hub.docker.com/r/debugss/k8s-infrastructure-platform/tags
  - Написан манифест для web-pod.yaml с одним контейнерос с Docker Hub. Проведен траблшутинг запуска pod:
 <br/>
-    <details>
+<details>
     <summary>Результат</summary>
 
     ```shell
@@ -261,7 +261,7 @@ Sergii Sinienok - Platform repository
 
  - В web pod добавлен volume. Этот же volume подключен к init-container и app container. Web pod удален и перезапущен:
 <br/>
-    <details>
+<details>
     <summary>Результат</summary>
 
     ```shell
@@ -275,7 +275,7 @@ Sergii Sinienok - Platform repository
     web   0/1   PodInitializing   0     2s
     web   1/1   Running   0     3s
     ```
-    </details>
+</details>
 <br/>
 
 - Установлен Kube Forwarder. Настроен порт форвардинг для локальной разработки.
