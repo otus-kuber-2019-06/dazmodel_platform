@@ -13,7 +13,7 @@ spec:
     - name: app
       mountPath: /app
   containers:
-  - name: dazmodel-k8s-intro
+  - name: web
     image: debugss/k8s-infrastructure-platform:1.0
     volumeMounts:
     - name: app
