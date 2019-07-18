@@ -3,7 +3,7 @@ Sergii Sinienok - Platform repository
 
 # TOC
 1. [Домашнее задание №1 - Kubernetes Intro](/kubernetes-intro/home-work-1.md)
-2. [Домашнее задание №2 - Kubernetes security](#Домашнее задание №2 - Kubernetes security)
+2. [Домашнее задание №2 - Kubernetes security](#Домашнее-задание-№2-Kubernetes-security)
 
 ## Домашнее задание №2 - Kubernetes security
 
