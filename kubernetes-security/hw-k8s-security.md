@@ -1,20 +1,13 @@
-# dazmodel_platform
-Sergii Sinienok - Platform repository
+## Домашнее задание №2 - Kubernetes security
 
-# TOC
-1. [Домашнее задание №1 - Kubernetes Intro](/kubernetes-intro/home-work-1.md)
-2. [Домашнее задание №2 - Kubernetes security](/kubernetes-security/hw-k8s-security.md)
-3. [Домашнее задание №3 - Networks](#Домашнее-задание-№3-Kubernetes-Networking)
+### Выполнено ДЗ №2
 
-## Домашнее задание №3 - Kubernetes Networking
-
-### Выполнено ДЗ №3
-
- - [ ] Основное ДЗ
- - [ ] 
+ - [X] Основное ДЗ
 
 ### В процессе сделано:
- - ReadinessProbe was added to kubernetes-intro/web-pod.yaml
+ - Taks01:
+   - Создан Service Account `bob`, ему выдана роль `admin` посредством RoleBinding
+   - Создан Sevice Account `dave` без ассайна роли. Не имеет доступа к кластеру
  - Task02:
    - Создан Namespace `prometheus`
    - Создан Sevice Account `carol`, добавлен в Namespace `prometheus`
