@@ -11,38 +11,23 @@ Sergii Sinienok - Platform repository
 ### Выполнено ДЗ №3
 
  - [ ] Основное ДЗ
- - [ ] 
+ - [X] Самостоятельная работа
+ - [X] * Advanced Task
 
 ### В процессе сделано:
- - ReadinessProbe was added to kubernetes-intro/web-pod.yaml
- - Task02:
-   - Создан Namespace `prometheus`
-   - Создан Sevice Account `carol`, добавлен в Namespace `prometheus`
-   - Создана ClusterRole `read-cluster-pods` с правами [ 'get', 'list', 'watch' ] для pod
-   - ClusterRole `read-cluster-pods` выдана всем Sevice Accounts в Namespace `prometheus`
- - Task03:
-   - Создан Namespace `dev`
-   - Создан Sevice Account `jane`, добавлен в Namespace `dev`
-   - `admin` ClusterRole выдана Sevice Account `jane` в Namespace `dev`
-   - Создан Sevice Account `ken`, добавлен в Namespace `dev`
-   - `view` ClusterRole выдана Sevice Account `ken` в Namespace `dev`
+ - ReadinessProbe was added to kubernetes-intro/web-pod.yaml.
+ - Web Deploy Deployment was created. readinessProbe was fixed for the container.
+ - `kubespy` was installled.
+ - have been playing with deployment's `strategy` for a while.
+ - ClusterIP Service was created and verified.
+ - IPVS was enabled, was able to ping service IP successfully!!!
+ - MetalLB was successfully installed and configured. The service is avasilable from within my host OS. SUCCESS!!!
+ - * CoreDNS services for UPD and TCP were sucessfully deployed. Check: `nslookup kubernetes.default.svc.cluster.local. 172.17.255.10`
+ - Ingress rules along with hedless service was successfully added, configured and tested.
+ - ** Canary deployemtn was configured using Ingress.
 
 ### Как запустить проект:
- - В корне проекта выполнить `kubectl apply -f kubernetes-security --recursive  `
-
-### Как проверить работоспособность:
- - task01:
-   - `kubectl apply -f kubernetes-security/task01`
-   - `kubectl auth can-i get deployments --as system:serviceaccount:default:bob -n default` - expected: `yes`
-   - `kubectl auth can-i get deployments --as system:serviceaccount:default:dave -n default` - expected: `no`
- - task02:
-   - `kubectl apply -f kubernetes-security/task02`
-   - `kubectl auth can-i get pods --as system:serviceaccount:prometheus:carol -n prometheus` - expected: `yes`
-   - `kubectl auth can-i get deployments --as system:serviceaccount:default:dave -n default` - expected: `no`
- - task03:
-   - `kubectl auth can-i create pods --as system:serviceaccount:dev:jane -n dev` - expected: `yes`
-   - `kubectl auth can-i get pods --as system:serviceaccount:dev:ken -n dev` - expected: `yes`
-   - `kubectl auth can-i create pods --as system:serviceaccount:dev:ken -n dev` - expected: `no`
+ - В корне проекта выполнить `kubectl apply -f kubernetes-networks --recursive  `
 
 ### PR checklist:
  - [X] Выставлен label с номером домашнего задания
