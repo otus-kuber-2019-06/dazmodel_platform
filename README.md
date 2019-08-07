@@ -10,7 +10,7 @@ Sergii Sinienok - Platform repository
 
 ### Выполнено ДЗ №3
 
- - [ ] Основное ДЗ
+ - [X] Основное ДЗ
  - [X] Самостоятельная работа
  - [X] * Advanced Task
 
