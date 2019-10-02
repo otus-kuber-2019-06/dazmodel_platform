@@ -11,6 +11,7 @@
  - Pod, Storage Class and PVC were created and applied to the cluster
 
 ### Как запустить проект:
+ - В корне проекта выполнить `kind create cluster --config kubernetes-storage/cluster/cluster.yaml `
  - В корне проекта выполнить `kubectl apply -f kubernetes-storage --recursive  `
 
 ### PR checklist:
