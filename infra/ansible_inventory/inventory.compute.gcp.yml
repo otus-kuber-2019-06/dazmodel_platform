@@ -1,0 +1,11 @@
+plugin: gcp_compute
+projects:
+  - otus-k8s-storage
+filters: []
+groups:
+  k8s-cluster: "'controller-' in name or 'worker-' in name"
+  kube-master: "'controller-' in name"
+  kube-node: "'worker-' in name"
+  etcd: "'controller-' in name"
+auth_kind: serviceaccount
+service_account_file: infra/otus-k8s-storage-65e24103da13.json

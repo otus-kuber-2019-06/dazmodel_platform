@@ -1,2 +1,5 @@
 kubernetes-dashboard/jwt.txt
 .DS_Store
+infra/*.json
+kubespray
+.gcp
