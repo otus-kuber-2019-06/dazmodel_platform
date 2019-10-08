@@ -1,5 +1,7 @@
 kubernetes-dashboard/jwt.txt
 .DS_Store
 infra/*.json
+infra/terraform-infra/.terraform
+infra/terraform-infra/*.tfstate
 kubespray
 .gcp
