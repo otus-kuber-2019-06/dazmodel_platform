@@ -11,4 +11,4 @@ Sergii Sinienok - Platform repository
 
 # Misc
 
-1. [Развертывание кластера kubernetes в gcloud с помощью IaC подхода.](/infra/readme.md)
+1. [k8s cluster in GCP using IaC approach](/infra/readme.md)

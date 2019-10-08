@@ -1,4 +1,4 @@
-## Развертывание кластера kubernetes в gcloud с помощью IaC подхода.
+## k8s cluster in GCP using IaC approach.
 
 ### Terrafrom
 
