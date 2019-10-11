@@ -4,7 +4,7 @@
 ### Выполнено ДЗ №5
 
  - [X] Основное ДЗ
- - [ ] Задание со *
+ - [X] Задание со *
 
 ### Основное ДЗ: В процессе сделано:
 
@@ -189,7 +189,8 @@ root@iscsi-pod:/data#
 ### Как запустить проект:
 
  - В корне проекта выполнить `kind create cluster --config kubernetes-storage/cluster/cluster.yaml `
- - В корне проекта выполнить `kubectl apply -f kubernetes-storage --recursive  `
+ - В корне проекта выполнить `kubectl apply -f kubernetes-storage --recursive`
+ - ДЗ со * нужно запускать согласно инструкции выше.
 
 ### PR checklist:
 
