@@ -7,5 +7,6 @@ groups:
   kube-master: "'controller-' in name"
   kube-node: "'worker-' in name"
   etcd: "'controller-' in name"
+  iscsi-target: "'iscsi-target' in name"
 auth_kind: serviceaccount
 service_account_file: infra/otus-k8s-storage-65e24103da13.json

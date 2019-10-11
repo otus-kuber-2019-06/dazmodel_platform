@@ -19,7 +19,7 @@ variable "controller-type" {
 }
 
 variable "controller-image" {
-  default = "ubuntu-os-cloud/ubuntu-1804-lts"
+  default = "centos-cloud/centos-7"
 }
 
 variable "controller-size" {
@@ -36,7 +36,7 @@ variable "worker-type" {
 }
 
 variable "worker-image" {
-  default = "ubuntu-os-cloud/ubuntu-1804-lts"
+  default = "centos-cloud/centos-7"
 }
 
 variable "worker-size" {
